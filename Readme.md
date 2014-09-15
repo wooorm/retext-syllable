@@ -35,9 +35,9 @@ root.visitType(root.WORD_NODE, function (node) {
     console.log(node.toString(), node.data.syllableCount);
 });
 // 'A', 1
-// 'simple', 2
-// 'english', 1
-// 'sentence', 3
+// 'yellow', 2
+// 'fresh', 1
+// 'banana', 3
 
 root.visitType(root.SENTENCE_NODE, function (node) {
     console.log(node.toString(), node.data.syllableCount);
