@@ -1,0 +1,31 @@
+{
+  "name": "retext-syllable",
+  "main": "index.js",
+  "description": "Count syllables in Retext",
+  "keywords": [
+    "syllable",
+    "retext"
+  ],
+  "dependencies": {
+    "syllable": "^0.0.1"
+  },
+  "license": "MIT",
+  "authors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/retext-syllable.git"
+  },
+  "ignore": [
+    ".*",
+    "*.log",
+    "*.md",
+    "component.json",
+    "package.json",
+    "coverage",
+    "node_modules",
+    "benchmark",
+    "spec"
+  ]
+}

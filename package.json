@@ -1,0 +1,39 @@
+{
+  "name": "retext-syllable",
+  "version": "0.0.1",
+  "description": "Count syllables in Retext",
+  "keywords": [
+    "syllable",
+    "retext"
+  ],
+  "dependencies": {
+    "syllable": "^0.0.1"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^0.8.0",
+    "istanbul": "^0.3.0",
+    "jscs": "^1.5.0",
+    "mocha": "^1.20.0",
+    "retext": "^0.1.1",
+    "retext-content": "^0.2.1",
+    "retext-visit": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/retext-syllable.git"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports spec/retext-syllable.spec.js",
+    "test-travis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks -u exports spec/retext-syllable.spec.js",
+    "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
+    "lint-api": "node_modules/.bin/eslint index.js --env node --env browser --rule 'quotes: [2, single]'",
+    "lint-test": "node_modules/.bin/eslint spec/retext-syllable.spec.js --env node --env mocha --rule 'quotes: [2, single]'",
+    "lint-style": "node_modules/.bin/jscs index.js spec/retext-syllable.spec.js --reporter=inline",
+    "install-browser-test": "npm install browserify",
+    "build-browser-test": "node_modules/.bin/browserify spec/retext-syllable.spec.js -o spec/browser.spec.js",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/retext-syllable.spec.js",
+    "make": "npm run lint && npm run coverage"
+  }
+}

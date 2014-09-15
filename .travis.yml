@@ -1,0 +1,13 @@
+language: node_js
+script: npm run-script test-travis
+node_js:
+- '0.10'
+- '0.11'
+after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
+deploy:
+  provider: npm
+  email: tituswormer@gmail.com
+  api_key:
+    secure: WMibnMJIFOPdT2xWIvhts1vMZNBQgFr1PXg1csik5IvssCmO1QX8jOoAWOpCBUDgXHVjSENHtW8o+j2uSESE3wZiCdDzDTs0PvsyJXCIn4QIGX+TdyXVUFb0zCQcR9LDjutdESin0uBzuAMj2y0ypIckMHeyEvNA4m1vmcERed4=
+  on:
+    repo: wooorm/retext-syllable
