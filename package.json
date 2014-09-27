@@ -2,6 +2,7 @@
   "name": "retext-syllable",
   "version": "0.0.1",
   "description": "Count syllables in Retext",
+  "license": "MIT",
   "keywords": [
     "syllable",
     "retext"
@@ -9,8 +10,11 @@
   "dependencies": {
     "syllable": "^0.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/retext-syllable.git"
+  },
   "author": "Titus Wormer <tituswormer@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "eslint": "^0.8.0",
     "istanbul": "^0.3.0",
@@ -19,10 +23,6 @@
     "retext": "^0.2.0-rc.2",
     "retext-content": "^0.2.2",
     "retext-visit": "^0.1.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wooorm/retext-syllable.git"
   },
   "scripts": {
     "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports spec/retext-syllable.spec.js",

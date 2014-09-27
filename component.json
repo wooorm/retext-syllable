@@ -2,6 +2,7 @@
   "name": "retext-syllable",
   "version": "0.0.1",
   "description": "Count syllables in Retext",
+  "license": "MIT",
   "keywords": [
     "syllable",
     "retext"
@@ -9,9 +10,8 @@
   "dependencies": {
     "wooorm/syllable": "^0.0.1"
   },
+  "repository": "wooorm/retext-syllable",
   "scripts" : [
     "index.js"
-  ],
-  "repository": "wooorm/retext-syllable",
-  "license": "MIT"
+  ]
 }
