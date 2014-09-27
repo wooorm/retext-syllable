@@ -24,34 +24,36 @@ $ bower install retext-syllable
 ```js
 var Retext = require('retext'),
     visit = require('retext-visit'),
-    syllable = require('retext-syllable');
+    syllable = require('retext-syllable'),
+    retext;
 
-var root = new Retext()
+retext = new Retext()
     .use(visit)
-    .use(syllable)
-    .parse('A yellow fresh banana.');
+    .use(syllable);
 
-root.visitType(root.WORD_NODE, function (node) {
-    console.log(node.toString(), node.data.syllableCount);
-});
-// 'A', 1
-// 'yellow', 2
-// 'fresh', 1
-// 'banana', 3
+retext.parse('A yellow fresh banana.', function (err, tree) {
+    tree.visitType(tree.WORD_NODE, function (node) {
+        console.log(node.toString(), node.data.syllableCount);
+    });
+    /**
+     * 'A', 1
+     * 'yellow', 2
+     * 'fresh', 1
+     * 'banana', 3
+     */
 
-root.visitType(root.SENTENCE_NODE, function (node) {
-    console.log(node.toString(), node.data.syllableCount);
+    tree.visitType(tree.SENTENCE_NODE, function (node) {
+        console.log(node.toString(), node.data.syllableCount);
+    });
+    /* 'A yellow fresh banana.', 7 */
 });
-// 'A yellow fresh banana.', 7
 ```
-
-This example also uses [retext-visit](https://github.com/wooorm/retext-visit).
 
 ## API
 
-None, the plugin automatically detects the syllable count of each word (using [wooorm/syllable](https://github.com/wooorm/syllable)) when it’s attached, removed, or changed, and stores the count in `wordNode.data.syllableCount`.
+None, **retext-syllable** automatically detects the syllable count of each word (using **[wooorm/syllable](https://github.com/wooorm/syllable)**) when it’s attached, removed, or changed, and stores the count in `wordNode.data.syllableCount`.
 
-Additionally, all parents (sentences, root, &c.) of words also receive a `syllableCount` data property (`parent.data.syllableCount`).
+Additionally, all parents (such as sentences, paragraphs, root) also receive a `syllableCount` data property (`parent.data.syllableCount`).
 
 ## License
 
