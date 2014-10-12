@@ -10,7 +10,7 @@ var syllable,
     Retext,
     assert;
 
-syllable = require('..');
+syllable = require('./');
 content = require('retext-content');
 Retext = require('retext');
 visit = require('retext-visit');
