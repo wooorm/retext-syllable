@@ -8,7 +8,7 @@
     "retext"
   ],
   "dependencies": {
-    "wooorm/syllable": "^0.0.1"
+    "wooorm/syllable": "^0.1.0"
   },
   "repository": "wooorm/retext-syllable",
   "scripts" : [
