@@ -73,7 +73,7 @@ describe('syllable()', function () {
 
         index = -1;
 
-        tree.visitType(tree.WORD_NODE, function (node) {
+        tree.visit(tree.WORD_NODE, function (node) {
             index++;
 
             assert('syllableCount' in node.data);
@@ -90,7 +90,7 @@ describe('syllable()', function () {
     it('should set each `syllableCount` to `0` when a `WordNode` has no ' +
         'value',
         function () {
-            tree.visitType(tree.WORD_NODE, function (node) {
+            tree.visit(tree.WORD_NODE, function (node) {
                 node.removeContent();
 
                 assert(node.data.syllableCount === 0);
@@ -109,7 +109,7 @@ describe('syllable()', function () {
 
         index = -1;
 
-        tree.visitType(tree.WORD_NODE, function (node) {
+        tree.visit(tree.WORD_NODE, function (node) {
             index++;
 
             node.replaceContent(otherWords[index]);
