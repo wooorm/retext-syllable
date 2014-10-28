@@ -64,10 +64,6 @@ describe('syllable()', function () {
         assert(typeof syllable === 'function');
     });
 
-    it('should export an `attach` method', function () {
-        assert(typeof syllable.attach === 'function');
-    });
-
     it('should count each `WordNode`', function () {
         var index;
 

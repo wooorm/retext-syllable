@@ -9,12 +9,6 @@ var getSyllableCount;
 getSyllableCount = require('syllable');
 
 /**
- * Define `syllable`.
- */
-
-function syllable() {}
-
-/**
  * Change handler.
  *
  * @param {Node} node
@@ -72,12 +66,12 @@ function onchangetextinside() {
 }
 
 /**
- * Define `attach`.
+ * Define `syllable`.
  *
  * @param {Retext} retext;
  */
 
-function attach(retext) {
+function syllable(retext) {
     var TextOM;
 
     TextOM = retext.TextOM;
@@ -88,12 +82,6 @@ function attach(retext) {
     TextOM.Child.on('insert', oninsert);
     TextOM.Child.on('remove', onremove);
 }
-
-/**
- * Expose `attach`.
- */
-
-syllable.attach = attach;
 
 /**
  * Expose `syllable`.
