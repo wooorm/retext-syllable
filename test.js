@@ -7,6 +7,7 @@
 var syllable,
     content,
     visit,
+    inspect,
     Retext,
     assert;
 
@@ -14,6 +15,7 @@ syllable = require('./');
 content = require('retext-content');
 Retext = require('retext');
 visit = require('retext-visit');
+inspect = require('retext-inspect');
 assert = require('assert');
 
 /**
@@ -24,6 +26,7 @@ var retext;
 
 retext = new Retext()
     .use(visit)
+    .use(inspect)
     .use(content)
     .use(syllable);
 
