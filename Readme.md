@@ -1,4 +1,4 @@
-# retext-syllable [![Build Status](https://travis-ci.org/wooorm/retext-syllable.svg?branch=master)](https://travis-ci.org/wooorm/retext-syllable) [![Coverage Status](https://img.shields.io/coveralls/wooorm/retext-syllable.svg)](https://coveralls.io/r/wooorm/retext-syllable?branch=master)
+# retext-syllable [![Build Status](https://img.shields.io/travis/wooorm/retext-syllable.svg?style=flat)](https://travis-ci.org/wooorm/retext-syllable) [![Coverage Status](https://img.shields.io/coveralls/wooorm/retext-syllable.svg?style=flat)](https://coveralls.io/r/wooorm/retext-syllable?branch=master)
 
 Count syllables with **[retext](https://github.com/wooorm/retext "Retext")**.
 
