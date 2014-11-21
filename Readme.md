@@ -22,36 +22,41 @@ $ bower install retext-syllable
 ## Usage
 
 ```js
-var Retext = require('retext'),
-    visit = require('retext-visit'),
-    syllable = require('retext-syllable'),
-    retext;
+var Retext = require('retext');
+var visit = require('retext-visit');
+var inspect = require('retext-inspect');
+var syllable = require('retext-syllable');
 
-retext = new Retext()
+var retext = new Retext()
     .use(visit)
+    .use(inspect)
     .use(syllable);
 
 retext.parse('A yellow fresh banana.', function (err, tree) {
-    tree.visitType(tree.WORD_NODE, function (node) {
-        console.log(node.toString(), node.data.syllableCount);
-    });
-    /**
-     * 'A', 1
-     * 'yellow', 2
-     * 'fresh', 1
-     * 'banana', 3
-     */
+    /* Log the first sentence and its words, note its data: */
+    console.log(tree.head.head);
 
-    tree.visitType(tree.SENTENCE_NODE, function (node) {
-        console.log(node.toString(), node.data.syllableCount);
-    });
-    /* 'A yellow fresh banana.', 7 */
+    /**
+     * SentenceNode[8] [data={"syllableCount":7}]
+     * ├─ WordNode[1] [data={"syllableCount":1}]
+     * │  └─ TextNode: 'A'
+     * ├─ WhiteSpaceNode: ' '
+     * ├─ WordNode[1] [data={"syllableCount":2}]
+     * │  └─ TextNode: 'yellow'
+     * ├─ WhiteSpaceNode: ' '
+     * ├─ WordNode[1] [data={"syllableCount":1}]
+     * │  └─ TextNode: 'fresh'
+     * ├─ WhiteSpaceNode: ' '
+     * ├─ WordNode[1] [data={"syllableCount":3}]
+     * │  └─ TextNode: 'banana'
+     * └─ PunctuationNode: '.'
+     */
 });
 ```
 
 ## API
 
-None, **retext-syllable** automatically detects the syllable count of each word (using **[wooorm/syllable](https://github.com/wooorm/syllable)**) when it’s attached, removed, or changed, and stores the count in `wordNode.data.syllableCount`.
+None, **retext-syllable** automatically detects the syllable count of each word (using **[wooorm/syllable](https://github.com/wooorm/syllable)**), and stores the count in `wordNode.data.syllableCount`.
 
 Additionally, all parents (such as sentences, paragraphs, root) also receive a `syllableCount` data property (`parent.data.syllableCount`).
 
