@@ -2,32 +2,24 @@
  * Dependencies.
  */
 
-var syllable,
-    Retext;
-
-syllable = require('wooorm/retext-syllable');
-Retext = require('wooorm/retext');
+var Retext = require('wooorm/retext');
+var syllable = require('wooorm/retext-syllable');
 
 /**
  * Retext.
  */
 
-var retext;
-
-retext = new Retext().use(syllable);
+var retext = new Retext().use(syllable);
 
 /**
  * DOM elements.
  */
 
-var $input,
-    $output;
-
-$input = document.getElementsByTagName('textarea')[0];
-$output = document.getElementsByTagName('output')[0];
+var $input = document.getElementsByTagName('textarea')[0];
+var $output = document.getElementsByTagName('output')[0];
 
 /**
- * DOM elements.
+ * Events
  */
 
 function oninputchange() {
