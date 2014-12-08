@@ -56,7 +56,7 @@ retext.parse('A yellow fresh banana.', function (err, tree) {
 
 ## API
 
-None, **retext-syllable** automatically detects the syllable count of each word (using **[wooorm/syllable](https://github.com/wooorm/syllable)**), and stores the count in `wordNode.data.syllableCount`.
+None, **retext-syllable** automatically detects the syllable count of each [`WordNode`](https://github.com/wooorm/textom/tree/master#textomwordnode-nlcstwordnode) (using **[wooorm/syllable](https://github.com/wooorm/syllable)**), and stores the count in `node.data.syllableCount`.
 
 Additionally, all parents (such as sentences, paragraphs, root) also receive a `syllableCount` data property (`parent.data.syllableCount`).
 
