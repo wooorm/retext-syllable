@@ -62,4 +62,4 @@ Additionally, all parents (such as sentences, paragraphs, root) also receive a `
 
 ## License
 
-MIT © Titus Wormer
+MIT © [Titus Wormer](http://wooorm.com)
