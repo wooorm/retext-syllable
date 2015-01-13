@@ -51,7 +51,7 @@ function onremove(previousParent) {
  * @this {WordNode}
  */
 
-function onchangetextinside() {
+function onchangeinside() {
     var self,
         currentCount,
         syllableCount;
@@ -76,9 +76,7 @@ function syllable(retext) {
 
     TextOM = retext.TextOM;
 
-    TextOM.WordNode.on('changetextinside', onchangetextinside);
-    TextOM.WordNode.on('removeinside', onchangetextinside);
-    TextOM.WordNode.on('insertinside', onchangetextinside);
+    TextOM.WordNode.on('changeinside', onchangeinside);
     TextOM.Child.on('insert', oninsert);
     TextOM.Child.on('remove', onremove);
 }
