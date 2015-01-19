@@ -5,23 +5,26 @@ Count syllables with **[retext](https://github.com/wooorm/retext "Retext")**.
 ## Installation
 
 npm:
-```sh
+
+```bash
 $ npm install retext-syllable
 ```
 
 Component:
-```sh
+
+```bash
 $ component install wooorm/retext-syllable
 ```
 
 Bower:
-```sh
+
+```bash
 $ bower install retext-syllable
 ```
 
 ## Usage
 
-```js
+```javascript
 var Retext = require('retext');
 var visit = require('retext-visit');
 var inspect = require('retext-inspect');
@@ -64,15 +67,14 @@ Additionally, all parents (such as sentences, paragraphs, root) also receive a `
 
 On a MacBook Air, **retext** performs about 40% slower with **retext-syllable**.
 
-```
-                      retext w/o retext-syllable
-             225 op/s » A paragraph (5 sentences, 100 words)
-              25 op/s » A section (10 paragraphs, 50 sentences, 1,000 words)
+```text
+           retext w/o retext-syllable
+  225 op/s » A paragraph (5 sentences, 100 words)
+   25 op/s » A section (10 paragraphs, 50 sentences, 1,000 words)
 
-                      retext w/ retext-syllable
-             136 op/s » A paragraph (5 sentences, 100 words)
-              14 op/s » A section (10 paragraphs, 50 sentences, 1,000 words)
-
+           retext w/ retext-syllable
+  136 op/s » A paragraph (5 sentences, 100 words)
+   14 op/s » A section (10 paragraphs, 50 sentences, 1,000 words)
 ```
 
 ## License
