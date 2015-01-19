@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * Dependencies.
  */
 
@@ -18,7 +18,7 @@ visit = require('retext-visit');
 inspect = require('retext-inspect');
 assert = require('assert');
 
-/**
+/*
  * Retext.
  */
 
@@ -30,7 +30,7 @@ retext = new Retext()
     .use(content)
     .use(syllable);
 
-/**
+/*
  * Fixtures.
  */
 
@@ -48,7 +48,7 @@ otherCounts = [1, 2, 1, 3];
 parentCount = 7;
 otherParentCount = 7;
 
-/**
+/*
  * Tests.
  */
 

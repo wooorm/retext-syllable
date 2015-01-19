@@ -3,14 +3,14 @@
 var Retext,
     syllable;
 
-/**
+/*
  * Dependencies.
  */
 
 Retext = require('retext');
 syllable = require('./');
 
-/**
+/*
  * Dependencies.
  */
 
@@ -20,7 +20,7 @@ var retext,
 retext = new Retext();
 retextWithSyllable = new Retext().use(syllable);
 
-/**
+/*
  * Test data: A (big?) article (w/ 100 paragraphs, 500
  * sentences, 10,000 words);
  *

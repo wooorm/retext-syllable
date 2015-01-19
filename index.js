@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * Dependencies.
  */
 
@@ -14,7 +14,6 @@ getSyllableCount = require('syllable');
  * @param {Node} node
  * @param {number} difference
  */
-
 function onchange(node, difference) {
     if (!node || !difference) {
         return;
@@ -30,7 +29,6 @@ function onchange(node, difference) {
  *
  * @this {Child}
  */
-
 function oninsert() {
     onchange(this.parent, this.data.syllableCount || 0);
 }
@@ -40,7 +38,6 @@ function oninsert() {
  *
  * @this {Child}
  */
-
 function onremove(previousParent) {
     onchange(previousParent, -(this.data.syllableCount || 0));
 }
@@ -50,7 +47,6 @@ function onremove(previousParent) {
  *
  * @this {WordNode}
  */
-
 function onchangeinside() {
     var self,
         currentCount,
@@ -68,9 +64,8 @@ function onchangeinside() {
 /**
  * Define `syllable`.
  *
- * @param {Retext} retext;
+ * @param {Retext} retext
  */
-
 function syllable(retext) {
     var TextOM;
 
@@ -81,7 +76,7 @@ function syllable(retext) {
     TextOM.Child.on('remove', onremove);
 }
 
-/**
+/*
  * Expose `syllable`.
  */
 
