@@ -2,8 +2,8 @@
  * Dependencies.
  */
 
-var Retext = require('wooorm/retext@0.5.0-rc.1');
-var syllable = require('wooorm/retext-syllable@0.1.5');
+var Retext = require('wooorm/retext@0.5.0');
+var syllable = require('wooorm/retext-syllable@0.1.6');
 
 /**
  * Retext.
