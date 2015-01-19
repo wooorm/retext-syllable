@@ -22,6 +22,12 @@ $ component install wooorm/retext-syllable
 $ bower install retext-syllable
 ```
 
+[Duo](http://duojs.org/#getting-started):
+
+```javascript
+var syllable = require('wooorm/retext-syllable');
+```
+
 ## Usage
 
 ```javascript
