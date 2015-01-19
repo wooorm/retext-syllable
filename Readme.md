@@ -4,19 +4,19 @@ Count syllables with **[retext](https://github.com/wooorm/retext "Retext")**.
 
 ## Installation
 
-npm:
+[npm](https://docs.npmjs.com/cli/install):
 
 ```bash
 $ npm install retext-syllable
 ```
 
-Component:
+[Component.js](https://github.com/componentjs/component):
 
 ```bash
 $ component install wooorm/retext-syllable
 ```
 
-Bower:
+[Bower](http://bower.io/#install-packages):
 
 ```bash
 $ bower install retext-syllable
