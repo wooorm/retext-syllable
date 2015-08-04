@@ -8,10 +8,12 @@
     "retext"
   ],
   "dependencies": {
-    "wooorm/syllable": "^0.1.0"
+    "wooorm/syllable": "~0.1.4",
+    "wooorm/unist-util-visit": "^1.0.0",
+    "wooorm/nlcst-to-string": "~0.1.5"
   },
   "repository": "wooorm/retext-syllable",
-  "scripts" : [
+  "scripts": [
     "index.js"
   ]
 }

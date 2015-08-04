@@ -1,0 +1,6 @@
+build/
+components/
+coverage/
+build.js
+retext-syllable.js
+retext-syllable.min.js

@@ -1,83 +1,141 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2014-2015 Titus Wormer
+ * @license MIT
+ * @module retext:syllable
+ * @fileoverview Count syllables in Retext.
+ */
+
 'use strict';
 
 /*
  * Dependencies.
  */
 
-var getSyllableCount;
-
-getSyllableCount = require('syllable');
+var syllable = require('syllable');
+var visit = require('unist-util-visit');
+var nlcstToString = require('nlcst-to-string');
 
 /**
- * Change handler.
+ * Patch a `syllableCount` property on `node`.
  *
- * @param {Node} node
- * @param {number} difference
+ * @param {NLCSTNode} node - Node.
+ * @param {number} count - Syllable count inside `node`.
  */
-function onchange(node, difference) {
-    if (!node || !difference) {
-        return;
+function patch(node, count) {
+    var data = node.data || {};
+
+    data.syllableCount = count || 0;
+
+    node.data = data;
+}
+
+/**
+ * Patch a `syllableCount` property on `WordNode`s.
+ *
+ * @param {NLCSTNode} node - Node.
+ */
+function any(node) {
+    patch(node, syllable(nlcstToString(node)));
+}
+
+/**
+ * Factory to gather parents and patch them based on their
+ * childrens directionality.
+ *
+ * @return {function(node, index, parent)} - Can be passed
+ *   to `visit`.
+ */
+function concatenateFactory() {
+    var queue = [];
+
+    /**
+     * Gather a parent if not already gathered.
+     *
+     * @param {NLCSTChildNode} node - Child.
+     * @param {number} index - Position of `node` in
+     *   `parent`.
+     * @param {NLCSTParentNode} parent - Parent of `child`.
+     */
+    function concatenate(node, index, parent) {
+        if (
+            parent &&
+            (!parent.data || !parent.data.syllableCount) &&
+            queue.indexOf(parent) === -1
+        ) {
+            queue.push(parent);
+        }
     }
 
-    node.data.syllableCount = (node.data.syllableCount || 0) + difference;
+    /**
+     * Patch one parent.
+     *
+     * @param {NLCSTParentNode} node - Parent
+     * @return {number} - Syllable count inside `node`.
+     */
+    function one(node) {
+        var children = node.children;
+        var length = children.length;
+        var index = -1;
+        var total = 0
+        var count;
+        var child;
 
-    onchange(node.parent, difference);
+        while (++index < length) {
+            child = children[index];
+            count = child.data && child.data.syllableCount;
+
+            if (count) {
+                total += count;
+            }
+        }
+
+        return total;
+    }
+
+    /**
+     * Patch all parents in reverse order: this means
+     * that first the last and deepest parent is invoked
+     * up to the first and highest parent.
+     */
+    function done() {
+        var index = queue.length;
+
+        while (index--) {
+            patch(queue[index], one(queue[index]));
+        }
+    }
+
+    concatenate.done = done;
+
+    return concatenate;
 }
 
 /**
- * Handler for node insertions.
+ * Transformer.
  *
- * @this {Child}
+ * @param {NLCSTNode} cst - Syntax tree.
  */
-function oninsert() {
-    onchange(this.parent, this.data.syllableCount || 0);
+function transformer(cst) {
+    var concatenate = concatenateFactory();
+
+    visit(cst, 'WordNode', any);
+    visit(cst, concatenate);
+
+    concatenate.done();
 }
 
 /**
- * Handler for node deletions.
+ * Attacher.
  *
- * @this {Child}
+ * @return {Function} - `transformer`.
  */
-function onremove(previousParent) {
-    onchange(previousParent, -(this.data.syllableCount || 0));
-}
-
-/**
- * Handler for node value changes.
- *
- * @this {WordNode}
- */
-function onchangeinside() {
-    var self,
-        currentCount,
-        syllableCount;
-
-    self = this;
-    currentCount = self.data.syllableCount || 0;
-    syllableCount = getSyllableCount(self.toString());
-
-    self.data.syllableCount = syllableCount;
-
-    onchange(self.parent, -currentCount + syllableCount);
-}
-
-/**
- * Define `syllable`.
- *
- * @param {Retext} retext
- */
-function syllable(retext) {
-    var TextOM;
-
-    TextOM = retext.TextOM;
-
-    TextOM.WordNode.on('changeinside', onchangeinside);
-    TextOM.Child.on('insert', oninsert);
-    TextOM.Child.on('remove', onremove);
+function attacher() {
+    return transformer;
 }
 
 /*
- * Expose `syllable`.
+ * Expose.
  */
 
-module.exports = syllable;
+module.exports = attacher;

@@ -1,15 +1,12 @@
 {
   "name": "retext-syllable",
-  "main": "index.js",
+  "main": "retext-syllable.js",
   "description": "Count syllables in Retext",
   "license": "MIT",
   "keywords": [
     "syllable",
     "retext"
   ],
-  "dependencies": {
-    "syllable": "^0.1.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wooorm/retext-syllable.git"
@@ -25,9 +22,9 @@
     "components/",
     "coverage/",
     "node_modules/",
-    "benchmark.js",
     "component.json",
     "package.json",
+    "benchmark.js",
     "test.js"
   ]
 }
