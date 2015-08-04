@@ -4,6 +4,11 @@
 
 <!--lint disable maximum-line-length-->
 
+1.0.0 / 2015-08-04
+==================
+
+*   Refactor api for retext@1.0.0 ([68a7eee](https://github.com/wooorm/retext-syllable/commit/68a7eee))
+
 0.1.6 / 2015-01-19
 ==================
 
